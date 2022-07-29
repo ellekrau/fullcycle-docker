@@ -2,8 +2,7 @@ FROM node:15.6.0-alpine
 WORKDIR /usr/src/app
 COPY . .
 
-RUN cd usr/src/app && \
-    npm init && \
+RUN npm init && \
     npm install express && \
     npm install mysql && \
     npm install node-random-name
