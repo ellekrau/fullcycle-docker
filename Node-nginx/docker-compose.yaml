@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    container_name: fullcycle-challange-db
+    restart: always
+    tty: true
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=fullcycle-challange
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - fullcycle-challange-network
+
+  app:
+    build: 
+      context: node
+      dockerfile:  Dockerfile
+    container_name: fullcycle-challange-app
+    tty: true
+    volumes:
+      - ./node:/usr/src/app
+    networks:
+      - fullcycle-challange-network
+
+  nginx:
+    build:
+      context: nginx
+      dockerfile: Dockerfile
+    container_name: fullcycle-challange-nginx
+    tty: true
+    ports:
+      - "8080:8080"
+    networks:
+      - fullcycle-challange-network
+
+networks:
+  fullcycle-challange-network:
+    driver: bridge

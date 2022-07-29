@@ -1,0 +1,16 @@
+{
+  "name": "fullcycle-docker-nginx-node-challange",
+  "version": "1.0.0",
+  "description": "- Enter node image docker container `docker run --rm -it -v $(pwd)/:/usr/src/app -p 3000:3000 node:15 bash`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mysql": "^2.18.1",
+    "node-random-name": "^1.0.1"
+  }
+}
